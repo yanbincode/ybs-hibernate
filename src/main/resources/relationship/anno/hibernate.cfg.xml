@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:root
+		</property>
+		<property name="hibernate.connection.username">
+			system
+		</property>
+		<property name="hibernate.connection.password">
+			root
+		</property>
+
+		<property name="dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+
+		<property name="javax.persistence.validation.mode">none</property>
+		<property name="current_session_context_class">thread</property>
+
+		<!-- one to one -->
+		<mapping class="relationship.one2one.model.Husband" />
+		<mapping class="relationship.one2one.model.Wife" />
+
+		<!-- many to one -->
+		<mapping class="relationship.many2one.model.Dream" />
+		<mapping class="relationship.many2one.model.Person" />
+
+		<!-- many to many -->
+		<mapping class="relationship.many2many.model.Teacher" />
+		<mapping class="relationship.many2many.model.Student" />
+
+	</session-factory>
+</hibernate-configuration>

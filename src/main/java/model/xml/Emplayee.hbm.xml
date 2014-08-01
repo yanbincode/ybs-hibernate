@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 配置实体映射文件 package对应实体类包路径。不指定则需要在内部配置 -->
+<hibernate-mapping package="model.xml">
+	<!-- java实体类，对应数据库表 。名称和表明不同，则需要table指定 -->
+	<class name="Emplayee" table="emplayee">
+		<!-- id指定表主键 -->
+		<id name="recordId" type="java.lang.Long">
+			<!-- 指定列名 -->
+			<column name="record_id" />
+			<!-- 指定主键生成策略 -->
+			<!-- native:数据库自己决定，sequence ：oracle的主键策略 ，identity： mysql，sqlserver下的策略 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- 其他字段 -->
+		<property name="fullName" type="java.lang.String">
+			<column name="full_name" />
+		</property>
+		<property name="age" type="java.lang.Long">
+			<column name="age" />
+		</property>
+		<property name="roleId" type="java.lang.Long">
+			<column name="role_id" />
+		</property>
+		<property name="dptId" type="java.lang.Long">
+			<column name="dpt_id" />
+		</property>
+	</class>
+</hibernate-mapping>

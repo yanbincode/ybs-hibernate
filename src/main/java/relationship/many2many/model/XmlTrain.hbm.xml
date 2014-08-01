@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="relationship.many2many.model">
+	<class name="XmlTrain">
+		<id name="id" type="java.lang.Long">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" type="java.lang.String" />
+
+		<!-- 配置多对多 -->
+		<set name="stations" table="xml_train_station">
+			<!-- 指定自己的主键 -->
+			<key column="train_id" />
+			<!-- 指定关联表的外键 -->
+			<many-to-many class="relationship.many2many.model.XmlStation" column="station_id" />
+		</set>
+	</class>
+</hibernate-mapping>

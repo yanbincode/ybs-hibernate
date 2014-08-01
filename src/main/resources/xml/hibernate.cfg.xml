@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- hibernate 基本配置 -->
+<hibernate-configuration>
+	<!-- 配置session；每个session-factory对应一个数据库，一般一个就够，除非用到多个数据库 -->
+	<session-factory>
+		<!-- 配置数据库链接，有很多方式替代 -->
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<!-- 数据库连接URL信息 -->
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:root
+		</property>
+		<!-- 数据库连接的用户名 -->
+		<property name="hibernate.connection.username">
+			system
+		</property>
+		<!-- 数据库连接的密码 -->
+		<property name="hibernate.connection.password">
+			root
+		</property>
+
+		<!-- hibernate配置 -->
+		<!-- 对应数据库连接方言 -->
+		<property name="dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<!-- 是否输出对应的SQL -->
+		<property name="show_sql">true</property>
+		<!-- 是否格式化SQL -->
+		<property name="format_sql">true</property>
+		<!-- 是否根据实体自动操作数据库：不常用。validate | update ：无表创建，有表更新 | create | create-drop -->
+		<property name="hbm2ddl.auto">create</property>
+
+		<!-- 4.0之后配置xml方言出错的问题。不用废弃的buildSessionFactory()用 ServiceRegistryBuilder -->
+		<property name="javax.persistence.validation.mode">none</property>
+
+		<!-- ====================指定对应的映射文件 =================== -->
+		<mapping resource="model/xml/Emplayee.hbm.xml" />
+
+		<mapping resource="model/composite/Car.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

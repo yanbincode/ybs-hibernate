@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:root
+		</property>
+		<property name="hibernate.connection.username">
+			system
+		</property>
+		<property name="hibernate.connection.password">
+			root
+		</property>
+
+		<property name="dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="hbm2ddl.auto">create</property>
+		<property name="javax.persistence.validation.mode">none</property>
+		<property name="current_session_context_class">thread</property>
+
+		<!-- ====================指定对应的映射文件 =================== -->
+		<mapping resource="relationship/one2one/model/XmlManager.hbm.xml" />
+		<mapping resource="relationship/one2one/model/XmlManagerCard.hbm.xml" />
+		<mapping resource="relationship/many2one/model/XmlDepartment.hbm.xml" />
+		<mapping resource="relationship/many2one/model/XmlEmployee.hbm.xml" />
+		<mapping resource="relationship/many2many/model/XmlStation.hbm.xml" />
+		<mapping resource="relationship/many2many/model/XmlTrain.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
